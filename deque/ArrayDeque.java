@@ -58,7 +58,7 @@ public class ArrayDeque<T> {
         int oldFirstIndex = nextFirst == items.length - 1 ? 0 : nextFirst + 1;
         T oldFirst = items[oldFirstIndex];
         items[oldFirstIndex] = null;
-        nextFirst = oldFirstIndex + 1;
+        nextFirst = oldFirstIndex;
         size--;
 
         return oldFirst;
@@ -72,7 +72,7 @@ public class ArrayDeque<T> {
         int oldLastIndex = nextLast == 0 ? items.length - 1 : nextLast - 1;
         T oldLast = items[oldLastIndex];
         items[oldLastIndex] = null;
-        nextLast = oldLastIndex - 1;
+        nextLast = oldLastIndex;
         size--;
 
         return oldLast;
@@ -85,8 +85,8 @@ public class ArrayDeque<T> {
 
         int adjustedIndex = nextFirst + 1 + index;
 
-        if (adjustedIndex >= size) {
-            adjustedIndex -= size;
+        if (adjustedIndex >= items.length) {
+            adjustedIndex -= items.length;
         }
 
         return items[adjustedIndex];

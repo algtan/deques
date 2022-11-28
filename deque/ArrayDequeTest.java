@@ -101,6 +101,67 @@ public class ArrayDequeTest {
         assertEquals("Should return null when removeLast is called on an empty Deque,", null, ad1.removeLast());
     }
 
+    @Test
+    /* Tests if the get method works for a single item */
+    public void singleItemGetTest() {
+
+        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+
+        ad1.addFirst(0);
+
+        int firstItem = ad1.get(0);
+
+        assertEquals("Should return 0 when get is called on index 0", 0, firstItem);
+    }
+
+    @Test
+    /** Fills a deque, then removes all items */
+    public void FillThenEmptyTest() {
+
+        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+
+        ad1.addLast(2);
+        ad1.addFirst(1);
+        ad1.addLast(3);
+        ad1.addFirst(0);
+        ad1.addLast(4);
+        ad1.addLast(5);
+        ad1.addLast(6);
+        ad1.addLast(7);
+
+        int firstRemoval = ad1.removeFirst();
+        assertEquals("Should return 0 when removeFirst is called on deque with size of 8", 0, firstRemoval);
+        assertEquals(7, ad1.size());
+
+        int secondRemoval = ad1.removeLast();
+        assertEquals("Should return 7 when removeFirst is called on update deque with size of 7", 7, secondRemoval);
+        assertEquals(6, ad1.size());
+
+        int thirdRemoval = ad1.removeFirst();
+        assertEquals("Should return 1 when removeFirst is called on update deque with size of 6", 1, thirdRemoval);
+        assertEquals(5, ad1.size());
+
+        int fourthRemoval = ad1.removeLast();
+        assertEquals("Should return 6 when removeFirst is called on update deque with size of 5", 6, fourthRemoval);
+        assertEquals(4, ad1.size());
+
+        int fifthRemoval = ad1.removeLast();
+        assertEquals("Should return 5 when removeFirst is called on update deque with size of 4", 5, fifthRemoval);
+        assertEquals(3, ad1.size());
+
+        int sixthRemoval = ad1.removeLast();
+        assertEquals("Should return 4 when removeFirst is called on update deque with size of 3", 4, sixthRemoval);
+        assertEquals(2, ad1.size());
+
+        int seventhRemoval = ad1.removeLast();
+        assertEquals("Should return 3 when removeFirst is called on update deque with size of 2", 3, seventhRemoval);
+        assertEquals(1, ad1.size());
+
+        int eighthRemoval = ad1.removeLast();
+        assertEquals("Should return 2 when removeFirst is called on update deque with size of 1", 2, eighthRemoval);
+        assertEquals(true, ad1.isEmpty());
+    }
+
 //    @Test
 //    /* Add large number of elements to deque; check if order is correct. */
 //    public void bigArrayDequeTest() {
