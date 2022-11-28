@@ -16,13 +16,13 @@ public class ArrayDeque<T> {
 
     public void addFirst(T item) {
         items[nextFirst] = item;
-        nextFirst = nextFirst == 0 ? items.length - 1 : nextFirst - 1;
+        nextFirst = fixIndex(nextFirst - 1);
         size++;
     }
 
     public void addLast(T item) {
         items[nextLast] = item;
-        nextLast = nextLast == items.length - 1 ? 0 : nextLast + 1;
+        nextLast = fixIndex(nextLast + 1);
         size++;
     }
 
@@ -37,7 +37,7 @@ public class ArrayDeque<T> {
     public void printDeque() {
         String output = "";
 
-        int j = nextFirst == items.length - 1 ? 0 : nextFirst + 1;
+        int j = fixIndex(nextFirst + 1);
         for (int i = 0; i < size; i++) {
             if (j == items.length) {
                 j = 0;
@@ -55,7 +55,7 @@ public class ArrayDeque<T> {
             return null;
         }
 
-        int oldFirstIndex = nextFirst == items.length - 1 ? 0 : nextFirst + 1;
+        int oldFirstIndex = fixIndex(nextFirst + 1);
         T oldFirst = items[oldFirstIndex];
         items[oldFirstIndex] = null;
         nextFirst = oldFirstIndex;
@@ -69,7 +69,7 @@ public class ArrayDeque<T> {
             return null;
         }
 
-        int oldLastIndex = nextLast == 0 ? items.length - 1 : nextLast - 1;
+        int oldLastIndex = fixIndex(nextLast - 1);
         T oldLast = items[oldLastIndex];
         items[oldLastIndex] = null;
         nextLast = oldLastIndex;
@@ -83,12 +83,17 @@ public class ArrayDeque<T> {
             return null;
         }
 
-        int adjustedIndex = nextFirst + 1 + index;
-
-        if (adjustedIndex >= items.length) {
-            adjustedIndex -= items.length;
-        }
-
+        int adjustedIndex = fixIndex(nextFirst + 1 + index);
         return items[adjustedIndex];
+    }
+
+    public int fixIndex(int index) {
+        if (index < 0) {
+            return index + items.length;
+        } else if (index >= items.length) {
+            return index - items.length;
+        } else {
+            return index;
+        }
     }
 }
