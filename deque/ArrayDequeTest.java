@@ -15,7 +15,7 @@ public class ArrayDequeTest {
      * && is the "and" operation. */
     public void addIsEmptySizeTest() {
 
-        ArrayDeque<String> ad1 = new ArrayDeque<>();
+        ArrayDeque<String> ad1 = new ArrayDeque<String>();
 
 		assertTrue("A newly initialized ArrayDeque should be empty", ad1.isEmpty());
 		ad1.addFirst("front");
@@ -39,7 +39,7 @@ public class ArrayDequeTest {
     /** Adds an item, then removes an item, and ensures that dll is empty afterwards. */
     public void addRemoveTest() {
 
-        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
 		// should be empty
 		assertTrue("ad1 should be empty upon initialization", ad1.isEmpty());
 
@@ -56,7 +56,7 @@ public class ArrayDequeTest {
     /* Tests removing from an empty deque */
     public void removeEmptyTest() {
 
-        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
         ad1.addFirst(3);
 
         ad1.removeLast();
@@ -76,9 +76,9 @@ public class ArrayDequeTest {
     /* Check if you can create ArrayDeques with different parameterized types*/
     public void multipleParamTest() {
 
-        ArrayDeque<String>  ad1 = new ArrayDeque<>();
-        ArrayDeque<Double>  ad2 = new ArrayDeque<>();
-        ArrayDeque<Boolean> ad3 = new ArrayDeque<>();
+        ArrayDeque<String>  ad1 = new ArrayDeque<String>();
+        ArrayDeque<Double>  ad2 = new ArrayDeque<Double>();
+        ArrayDeque<Boolean> ad3 = new ArrayDeque<Boolean>();
 
         ad1.addFirst("string");
         ad2.addFirst(3.14159);
@@ -93,7 +93,7 @@ public class ArrayDequeTest {
     /* check if null is return when removing from an empty ArrayDeque. */
     public void emptyNullReturnTest() {
 
-        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
 
         boolean passed1 = false;
         boolean passed2 = false;
@@ -105,7 +105,7 @@ public class ArrayDequeTest {
     /* Tests if the get method works for a single item */
     public void singleItemGetTest() {
 
-        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
 
         ad1.addFirst(0);
 
@@ -118,7 +118,7 @@ public class ArrayDequeTest {
     /** Fills a deque, then removes all items */
     public void FillThenEmptyTest() {
 
-        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
 
         ad1.addLast(2);
         ad1.addFirst(1);
@@ -166,7 +166,7 @@ public class ArrayDequeTest {
     /* Tests fixIndex helper method */
 
     public void fixIndexTests() {
-        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
 
         int firstIndexFix = ad1.fixIndex(8);
         assertEquals(0, firstIndexFix);
