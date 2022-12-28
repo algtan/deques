@@ -163,4 +163,32 @@ public class LinkedListDequeTest {
         assertEquals(1, nextItem);
         assertFalse(lld1Iterator.hasNext());
     }
+
+    @Test
+    public void equalsTest() {
+        LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+        lld1.addLast(1);
+
+        LinkedListDeque<Integer> lld2 = new LinkedListDeque<Integer>();
+        lld2.addLast(1);
+
+        LinkedListDeque<Integer> lld3 = new LinkedListDeque<Integer>();
+        lld3.addLast(2);
+
+        LinkedListDeque<Integer> lld4 = new LinkedListDeque<Integer>();
+        lld4.addLast(1);
+        lld4.addLast(2);
+
+        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
+        ad1.addLast(1);
+
+        int[] numArr = {1};
+
+        assertTrue(lld1.equals(lld1));
+        assertTrue(lld1.equals(lld2));
+        assertFalse(lld1.equals(lld3));
+        assertFalse(lld1.equals(lld4));
+        assertTrue(lld1.equals(ad1));
+        assertFalse(lld1.equals(numArr));
+    }
 }

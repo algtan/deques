@@ -137,4 +137,23 @@ public class LinkedListDeque<T> implements Deque<T> {
             return returnItem;
         }
     }
+
+    public boolean equals(Object o) {
+        if (this == o) { return true; }
+        if (o instanceof Deque) {
+            Deque otherDeque = (Deque) o;
+
+            if (this.size != otherDeque.size()) { return false; }
+
+            Node<T> currentNode = sentinel.next;
+            for (int i = 0; i < size; i++) {
+                if (currentNode.item != otherDeque.get(i)) {
+                    return false;
+                }
+                currentNode = currentNode.next;
+            }
+            return true;
+        }
+        return false;
+    }
 }

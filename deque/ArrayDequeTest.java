@@ -229,4 +229,32 @@ public class ArrayDequeTest {
         assertEquals(1, nextItem);
         assertFalse(ad1Iterator.hasNext());
     }
+
+    @Test
+    public void equalsTest() {
+        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
+        ad1.addLast(1);
+
+        ArrayDeque<Integer> ad2 = new ArrayDeque<Integer>();
+        ad2.addLast(1);
+
+        ArrayDeque<Integer> ad3 = new ArrayDeque<Integer>();
+        ad3.addLast(2);
+
+        ArrayDeque<Integer> ad4 = new ArrayDeque<Integer>();
+        ad4.addLast(1);
+        ad4.addLast(2);
+
+        LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+        lld1.addLast(1);
+
+        int[] numArr = {1};
+
+        assertTrue(ad1.equals(ad1));
+        assertTrue(ad1.equals(ad2));
+        assertFalse(ad1.equals(ad3));
+        assertFalse(ad1.equals(ad4));
+        assertTrue(ad1.equals(lld1));
+        assertFalse(ad1.equals(numArr));
+    }
 }
