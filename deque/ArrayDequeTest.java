@@ -2,6 +2,8 @@ package deque;
 
 import org.junit.Test;
 
+import java.util.Iterator;
+
 import static org.junit.Assert.*;
 
 
@@ -211,5 +213,20 @@ public class ArrayDequeTest {
         assertEquals((Integer) 2, ad1.get(2));
         assertNull(ad1.get(-1));
         assertNull(ad1.get(3));
+    }
+
+    @Test
+    public void iteratorTest() {
+        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
+        ad1.addLast(1);
+
+        Iterator<Integer> ad1Iterator = ad1.iterator();
+
+        assertTrue(ad1Iterator.hasNext());
+
+        int nextItem = ad1Iterator.next();
+
+        assertEquals(1, nextItem);
+        assertFalse(ad1Iterator.hasNext());
     }
 }
