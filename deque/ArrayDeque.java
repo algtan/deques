@@ -5,9 +5,9 @@ public class ArrayDeque<T> {
     private int nextFirst;
     private int nextLast;
     private int size;
-    private int initialSize = 8;
 
     public ArrayDeque() {
+        int initialSize = 8;
         items = (T[]) new Object[initialSize];
         nextFirst = initialSize - 1;
         nextLast = 0;
