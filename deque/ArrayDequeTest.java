@@ -198,4 +198,18 @@ public class ArrayDequeTest {
 //            assertEquals("Should have the same value", i, (double) ad1.removeLast(), 0.0);
 //        }
 //    }
+
+    @Test
+    public void getTest() {
+        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
+        ad1.addLast(0);
+        ad1.addLast(1);
+        ad1.addLast(2);
+
+        assertEquals((Integer) 0, ad1.get(0));
+        assertEquals((Integer) 1, ad1.get(1));
+        assertEquals((Integer) 2, ad1.get(2));
+        assertNull(ad1.get(-1));
+        assertNull(ad1.get(3));
+    }
 }
