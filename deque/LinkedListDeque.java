@@ -12,7 +12,8 @@ public class LinkedListDeque<T> implements Deque<T> {
         public Node<T> next;
 
         // constructor to help build sentinel node
-        public Node() {}
+        public Node() {
+        }
 
         public Node(T i, Node<T> p, Node<T> n) {
             item = i;
@@ -91,7 +92,7 @@ public class LinkedListDeque<T> implements Deque<T> {
         return oldLast.item;
     }
 
-    public T get(int index){
+    public T get(int index) {
         if (index < 0 || index >= size) {
             return null;
         }
@@ -129,11 +130,16 @@ public class LinkedListDeque<T> implements Deque<T> {
     private class LinkedListDequeIterator implements Iterator<T> {
         private int currentPos;
         private Node<T> currentNode;
+
         public LinkedListDequeIterator() {
             currentPos = 0;
             currentNode = sentinel.next;
         }
-        public boolean hasNext() { return currentPos < size; }
+
+        public boolean hasNext() {
+            return currentPos < size;
+        }
+
         public T next() {
             T returnItem = currentNode.item;
             currentPos += 1;
@@ -143,11 +149,15 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
     public boolean equals(Object o) {
-        if (this == o) { return true; }
+        if (this == o) {
+            return true;
+        }
         if (o instanceof Deque) {
             Deque otherDeque = (Deque) o;
 
-            if (this.size != otherDeque.size()) { return false; }
+            if (this.size != otherDeque.size()) {
+                return false;
+            }
 
             Node<T> currentNode = sentinel.next;
             for (int i = 0; i < size; i++) {

@@ -96,7 +96,7 @@ public class ArrayDeque<T> implements Deque<T> {
         return oldLast;
     }
 
-    public T get(int index){
+    public T get(int index) {
         if (index < 0 || index >= size) {
             return null;
         }
@@ -121,10 +121,15 @@ public class ArrayDeque<T> implements Deque<T> {
 
     private class ArrayDequeIterator implements Iterator<T> {
         private int currentPos;
+
         public ArrayDequeIterator() {
             currentPos = 0;
         }
-        public boolean hasNext() { return currentPos < size; }
+
+        public boolean hasNext() {
+            return currentPos < size;
+        }
+
         public T next() {
             T returnItem = get(currentPos);
             currentPos += 1;
@@ -133,11 +138,15 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     public boolean equals(Object o) {
-        if (this == o) { return true; }
+        if (this == o) {
+            return true;
+        }
         if (o instanceof Deque) {
             Deque otherDeque = (Deque) o;
 
-            if (this.size != otherDeque.size()) { return false; }
+            if (this.size != otherDeque.size()) {
+                return false;
+            }
             for (int i = 0; i < size; i++) {
                 if (get(i) != otherDeque.get(i)) {
                     return false;
@@ -153,7 +162,7 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     public boolean capacityShouldBeReduced() {
-         return items.length > 8 && size <= items.length / 4;
+        return items.length > 8 && size <= items.length / 4;
     }
 
     public int increasedCapacity() {
