@@ -43,10 +43,6 @@ public class LinkedListDeque<T> implements Deque<T> {
         size++;
     }
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
     public int size() {
         return size;
     }
