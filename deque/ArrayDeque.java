@@ -148,7 +148,7 @@ public class ArrayDeque<T> implements Deque<T> {
                 return false;
             }
             for (int i = 0; i < size; i++) {
-                if (get(i) != otherDeque.get(i)) {
+                if (!get(i).equals(otherDeque.get(i))) {
                     return false;
                 }
             }

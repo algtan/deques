@@ -161,7 +161,7 @@ public class LinkedListDeque<T> implements Deque<T> {
 
             Node<T> currentNode = sentinel.next;
             for (int i = 0; i < size; i++) {
-                if (currentNode.item != otherDeque.get(i)) {
+                if (!get(i).equals(otherDeque.get(i))) {
                     return false;
                 }
                 currentNode = currentNode.next;

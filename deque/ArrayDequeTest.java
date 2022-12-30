@@ -292,4 +292,21 @@ public class ArrayDequeTest {
         assertTrue(ad1.equals(lld1));
         assertFalse(ad1.equals(numArr));
     }
+
+    @Test
+    public void deepEqualsTest() {
+        ArrayDeque<String> ad1 = new ArrayDeque<String>();
+        ad1.addLast("test");
+
+        ArrayDeque<String> ad2 = new ArrayDeque<String>();
+        ad2.addLast("test");
+
+        ArrayDeque<ArrayDeque<String>> ad3 = new ArrayDeque<ArrayDeque<String>>();
+        ad3.addLast(ad1);
+
+        ArrayDeque<ArrayDeque<String>> ad4 = new ArrayDeque<ArrayDeque<String>>();
+        ad4.addLast(ad2);
+
+        assertTrue(ad3.equals(ad4));
+    }
 }

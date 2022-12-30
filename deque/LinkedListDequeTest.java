@@ -193,4 +193,21 @@ public class LinkedListDequeTest {
         assertTrue(lld1.equals(ad1));
         assertFalse(lld1.equals(numArr));
     }
+
+    @Test
+    public void deepEqualsTest() {
+        LinkedListDeque<String> lld1 = new LinkedListDeque<String>();
+        lld1.addLast("test");
+
+        LinkedListDeque<String> lld2 = new LinkedListDeque<String>();
+        lld2.addLast("test");
+
+        LinkedListDeque<LinkedListDeque<String>> lld3 = new LinkedListDeque<LinkedListDeque<String>>();
+        lld3.addLast(lld1);
+
+        LinkedListDeque<LinkedListDeque<String>> lld4 = new LinkedListDeque<LinkedListDeque<String>>();
+        lld4.addLast(lld2);
+
+        assertTrue(lld3.equals(lld4));
+    }
 }
