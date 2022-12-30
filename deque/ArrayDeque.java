@@ -17,12 +17,20 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     public void addFirst(T item) {
+        if (capacityShouldBeIncreased()) {
+            resize(increasedCapacity());
+        }
+
         items[nextFirst] = item;
         nextFirst = fixIndex(nextFirst - 1);
         size++;
     }
 
     public void addLast(T item) {
+        if (capacityShouldBeIncreased()) {
+            resize(increasedCapacity());
+        }
+
         items[nextLast] = item;
         nextLast = fixIndex(nextLast + 1);
         size++;
@@ -57,6 +65,10 @@ public class ArrayDeque<T> implements Deque<T> {
             return null;
         }
 
+        if (capacityShouldBeReduced()) {
+            resize(reducedCapacity());
+        }
+
         int oldFirstIndex = fixIndex(nextFirst + 1);
         T oldFirst = items[oldFirstIndex];
         items[oldFirstIndex] = null;
@@ -69,6 +81,10 @@ public class ArrayDeque<T> implements Deque<T> {
     public T removeLast() {
         if (isEmpty()) {
             return null;
+        }
+
+        if (capacityShouldBeReduced()) {
+            resize(reducedCapacity());
         }
 
         int oldLastIndex = fixIndex(nextLast - 1);
@@ -130,5 +146,39 @@ public class ArrayDeque<T> implements Deque<T> {
             return true;
         }
         return false;
+    }
+
+    public boolean capacityShouldBeIncreased() {
+        return size == items.length;
+    }
+
+    public boolean capacityShouldBeReduced() {
+         return items.length > 8 && size <= items.length / 4;
+    }
+
+    public int increasedCapacity() {
+        return items.length * 2;
+    }
+
+    public int reducedCapacity() {
+        return items.length / 2;
+    }
+
+    public void resize(int newCapacity) {
+        int firstIndex = fixIndex(nextFirst + 1);
+        int lastIndex = fixIndex(nextLast - 1);
+
+        T[] temp = (T[]) new Object[newCapacity];
+
+        if (firstIndex > lastIndex) {
+            System.arraycopy(items, firstIndex, temp, 0, items.length - firstIndex);
+            System.arraycopy(items, 0, temp, items.length - firstIndex, lastIndex + 1);
+        } else {
+            System.arraycopy(items, firstIndex, temp, 0, size);
+        }
+
+        items = temp;
+        nextFirst = newCapacity - 1;
+        nextLast = size;
     }
 }
