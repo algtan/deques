@@ -101,7 +101,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         return items[adjustedIndex];
     }
 
-    public int fixIndex(int index) {
+    private int fixIndex(int index) {
         if (index < 0) {
             return index + items.length;
         } else if (index >= items.length) {

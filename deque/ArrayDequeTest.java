@@ -167,25 +167,6 @@ public class ArrayDequeTest {
     }
 
     @Test
-    /* Tests fixIndex helper method */
-
-    public void fixIndexTests() {
-        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
-
-        int firstIndexFix = ad1.fixIndex(8);
-        assertEquals(0, firstIndexFix);
-
-        int secondIndexFix = ad1.fixIndex(-1);
-        assertEquals(7, secondIndexFix);
-
-        int thirdIndexFix = ad1.fixIndex(4);
-        assertEquals(4, thirdIndexFix);
-
-        int fourthIndexFix = ad1.fixIndex(9);
-        assertEquals(1, fourthIndexFix);
-    }
-
-    @Test
     /* Add large number of elements to deque; check if order is correct. */
     public void bigArrayDequeTest() {
 
