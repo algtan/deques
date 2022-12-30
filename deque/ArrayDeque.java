@@ -118,7 +118,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     private class ArrayDequeIterator implements Iterator<T> {
         private int currentPos;
 
-        public ArrayDequeIterator() {
+        private ArrayDequeIterator() {
             currentPos = 0;
         }
 
@@ -153,23 +153,23 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         return false;
     }
 
-    public boolean capacityShouldBeIncreased() {
+    private boolean capacityShouldBeIncreased() {
         return size == items.length;
     }
 
-    public boolean capacityShouldBeReduced() {
+    private boolean capacityShouldBeReduced() {
         return items.length > 8 && size <= items.length / 4;
     }
 
-    public int increasedCapacity() {
+    private int increasedCapacity() {
         return items.length * 2;
     }
 
-    public int reducedCapacity() {
+    private int reducedCapacity() {
         return items.length / 2;
     }
 
-    public void resize(int newCapacity) {
+    private void resize(int newCapacity) {
         int firstIndex = fixIndex(nextFirst + 1);
         int lastIndex = fixIndex(nextLast - 1);
 
